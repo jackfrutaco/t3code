@@ -1,0 +1,279 @@
+/*
+ * Tatastu skin. Loaded after index.css and restates the stock (no theme
+ * selected) roles with Tatastu's Night Bordeaux palette, faces and radius.
+ * Kept in its own file so upstream merges never touch it. A theme the user
+ * picks in Settings still wins, because html[data-theme-id] outranks these.
+ * Source of truth for every value: tatastu design/tokens.json.
+ */
+
+@font-face {
+  font-family: "Maha Mitho";
+  src: url("./fonts/MahaMitho-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maha Mitho";
+  src: url("./fonts/MahaMitho-App-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maha Mitho";
+  src: url("./fonts/MahaMitho-App-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Maha Mitho";
+  src: url("./fonts/MahaMitho-App-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libre Franklin";
+  src: url("./fonts/libre-franklin-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libre Franklin";
+  src: url("./fonts/libre-franklin-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Libre Franklin";
+  src: url("./fonts/libre-franklin-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("./fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("./fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-sans: "Libre Franklin", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: "Maha Mitho", Georgia, serif;
+
+  /* The shadcn radius ladder hangs off this one lever: md 1px, lg 3px, xl 7px, 2xl 11px, 3xl 15px. */
+  --radius: 3px;
+  --control-radius: 3px;
+
+  --app-scrollbar-thumb: #d4cabf;
+  --app-scrollbar-thumb-hover: color-mix(in srgb, #907964 50%, #d4cabf);
+
+  /* No pure white or black anywhere: stock white is the cream card, black the ink. */
+  --color-white: #f3eee7;
+  --color-black: #0f0b0c;
+  --color-zinc-25: #f3eee7;
+}
+
+:root.dark {
+  --app-scrollbar-thumb: #292325;
+  --app-scrollbar-thumb-hover: #3d3538;
+}
+
+/* Light: warm paper, faint-wine ink, Night Bordeaux primary. */
+:root,
+[data-app-sidebar] {
+  --background: #ece6df;
+  --foreground: #0f0b0c;
+  --card: #f3eee7;
+  --card-foreground: #0f0b0c;
+  --popover: #f3eee7;
+  --popover-foreground: #0f0b0c;
+  --primary: #4f001c;
+  --primary-foreground: #f3eee7;
+  --secondary: #e3dcd4;
+  --secondary-foreground: #0f0b0c;
+  --muted: #e3dcd4;
+  --muted-foreground: #6a5e53;
+  --accent: #e3dcd4;
+  --accent-foreground: #0f0b0c;
+  --message-surface: #4f001c;
+  --message-foreground: #f3eee7;
+  --message-action: #4f001c;
+  --message-action-foreground: #f3eee7;
+  --message-action-hover: #6b0526;
+  --error: #b22924;
+  --error-foreground: #b22924;
+  --error-surface: #f4dfdd;
+  --border: #d4cabf;
+  --input: #d4cabf;
+  --ring: #4f001c;
+  --info: #2c6088;
+  --info-foreground: #2c6088;
+  --success: #396a50;
+  --success-foreground: #396a50;
+  --warning: #815908;
+  --warning-foreground: #815908;
+  --warning-surface: color-mix(in srgb, #815908 10%, #f3eee7);
+  --update: #4f001c;
+  --update-foreground: #4f001c;
+  --update-surface: color-mix(in srgb, #4f001c 10%, #f3eee7);
+  --sidebar: #e3dcd4;
+  --sidebar-foreground: #0f0b0c;
+  --sidebar-muted-foreground: #6a5e53;
+  --sidebar-control-surface: color-mix(in srgb, #0f0b0c 5%, #e3dcd4);
+  --sidebar-row-hover: color-mix(in srgb, #0f0b0c 4%, #e3dcd4);
+  --sidebar-row-active: color-mix(in srgb, #2c6088 16%, #e3dcd4);
+  --sidebar-row-selected: color-mix(in srgb, #2c6088 16%, #e3dcd4);
+  --sidebar-border: #d4cabf;
+  --sidebar-stage-fade: #e3dcd4;
+  --terminal-background: #ece6df;
+  --terminal-foreground: #0f0b0c;
+  --terminal-cursor: #4f001c;
+  --terminal-selection-background: rgb(44 96 136 / 16%);
+}
+
+/* Dark: the same print on dark stock. Grounds carry only a whisper of the wine. */
+:root.dark,
+.dark [data-app-sidebar] {
+  --background: #0e0b0c;
+  --foreground: #f0dbc4;
+  --card: #161213;
+  --card-foreground: #f0dbc4;
+  --popover: #161213;
+  --popover-foreground: #f0dbc4;
+  --primary: #7a102d;
+  --primary-foreground: #f3eee7;
+  --secondary: #211c1d;
+  --secondary-foreground: #f0dbc4;
+  --muted: #161213;
+  --muted-foreground: #d3c8bc;
+  --accent: #211c1d;
+  --accent-foreground: #f0dbc4;
+  --message-surface: #7a102d;
+  --message-foreground: #f3eee7;
+  --message-action: #7a102d;
+  --message-action-foreground: #f3eee7;
+  --message-action-hover: #941f3d;
+  --error: #f69c92;
+  --error-foreground: #f69c92;
+  --tool-error-icon: #f69c92;
+  --error-surface: color-mix(in srgb, #931e1a 35%, #0e0b0c);
+  --border: #292325;
+  --input: #292325;
+  --ring: #b04a62;
+  --info: #8cbade;
+  --info-foreground: #8cbade;
+  --success: #6bc796;
+  --success-foreground: #6bc796;
+  --warning: #deac4f;
+  --warning-foreground: #deac4f;
+  --warning-surface: color-mix(in srgb, #deac4f 12%, #0e0b0c);
+  --update: #7a102d;
+  --update-foreground: #d2abaf;
+  --update-surface: color-mix(in srgb, #7a102d 30%, #0e0b0c);
+  --sidebar: #090707;
+  --sidebar-foreground: #f0dbc4;
+  --sidebar-muted-foreground: #d3c8bc;
+  --sidebar-control-surface: #161213;
+  --sidebar-row-hover: color-mix(in srgb, #f0dbc4 6%, #090707);
+  --sidebar-row-active: color-mix(in srgb, #418ec8 24%, #090707);
+  --sidebar-row-selected: color-mix(in srgb, #418ec8 24%, #090707);
+  --sidebar-border: #292325;
+  --sidebar-stage-fade: #090707;
+  --terminal-background: #0e0b0c;
+  --terminal-foreground: #f0dbc4;
+  --terminal-cursor: #d2abaf;
+  --terminal-selection-background: rgb(65 142 200 / 24%);
+}
+
+::selection {
+  background: rgb(44 96 136 / 16%);
+}
+.dark ::selection {
+  background: rgb(65 142 200 / 24%);
+}
+
+/* Maha Mitho names things: page heroes, dialog, sheet and empty-state titles. */
+h1,
+[data-slot="dialog-title"],
+[data-slot="alert-dialog-title"],
+[data-slot="sheet-title"],
+[data-slot="empty-title"] {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+/* Warm clay modal shadow instead of a cold black bloom. */
+.dialog-glass {
+  box-shadow: 0 8px 40px rgb(42 33 24 / 18%);
+}
+.dark .dialog-glass {
+  box-shadow:
+    inset 0 1px rgb(255 255 255 / 6%),
+    0 24px 72px -20px rgb(0 0 0 / 80%);
+}
+
+/* bg-zinc-25 is compiled to a literal near-white, so restate it as the raised card. */
+.bg-zinc-25 {
+  background-color: var(--card);
+}
+.bg-zinc-25\/80 {
+  background-color: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+/* Buttons are flat print: no inset gloss or drop, and hover deepens the ink instead of fading it. */
+[data-slot="button"].bg-primary,
+[data-slot="button"].bg-destructive {
+  --tw-inset-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+}
+[data-slot="button"].bg-primary:is(:hover, [data-pressed], :focus-visible) {
+  background-color: var(--message-action-hover);
+}
+[data-slot="button"].bg-destructive:is(:hover, [data-pressed], :focus-visible) {
+  background-color: #94221e;
+}
+
+/* Keyboard focus changes the fill, never adds a bounding ring. */
+[data-slot="button"]:focus-visible {
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-ring-offset-shadow: 0 0 #0000;
+}
+[data-slot="button"]:not(.bg-primary, .bg-destructive):focus-visible {
+  background-color: var(--accent);
+}
+
+/* On dark stock the wine fill is illegible as type, so primary text takes the aged-ink rose,
+   and a solid destructive fill takes the deep ember while destructive text stays coral. */
+.dark .text-primary {
+  color: #d2abaf;
+}
+.dark .text-primary\/70 {
+  color: color-mix(in srgb, #d2abaf 70%, transparent);
+}
+.dark .bg-destructive {
+  background-color: #931e1a;
+}
+.dark [data-slot="button"].bg-destructive:is(:hover, [data-pressed], :focus-visible) {
+  background-color: #751815;
+}
+
+/* The composer's lift uses the warm clay shadow tint on paper. */
+:root:not(.dark) .shadow-composer,
+:root:not(.dark) .before\:shadow-composer::before {
+  --tw-shadow-color: rgb(90 74 53 / 40%);
+}
