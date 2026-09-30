@@ -2235,3 +2235,5 @@ code {
 .composer-tiptap li[data-checked] > div > p {
   margin: 0;
 }
+
+@import "./tatastu/tatastu.css";
